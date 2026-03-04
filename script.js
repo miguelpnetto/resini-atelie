@@ -168,8 +168,8 @@ function atualizarCarrinho() {
         itensContainer.innerHTML += `
             <div class="cart-item">
                 <div style="flex-grow: 1;">
-                    <div style="font-size: 0.9rem; font-weight: 600; color: white;">${item.nome}</div>
-                    <div style="font-size: 0.8rem; color: #FF1493;">${item.qtd}x R$ ${item.preco.toFixed(2).replace('.', ',')}</div>
+                    <div style="font-size: 0.9rem; font-weight: 600; color: var(--texto);">${item.nome}</div>
+                    <div style="font-size: 0.8rem; color: var(--cor-secundaria);">${item.qtd}x R$ ${item.preco.toFixed(2).replace('.', ',')}</div>
                 </div>
                 <button onclick="removerDoCarrinho(${index})" style="background: rgba(255,0,0,0.1); border:none; color:#ff4444; padding:8px; border-radius:8px; cursor:pointer;">
                     <span class="material-icons-round" style="font-size:18px;">delete</span>
@@ -225,17 +225,24 @@ function mostrarMensagem(texto) {
         msgDiv = document.createElement('div');
         msgDiv.id = 'msg-toast';
         msgDiv.style.cssText = `
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: linear-gradient(135deg, #FF1493, #8A2BE2); color: white; padding: 12px 24px; border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 3000; font-weight: 600; font-size: 0.9rem;
-            opacity: 0; transition: opacity 0.3s, bottom 0.3s; pointer-events: none;
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: #A594F9; color: white; padding: 12px 24px; border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(165, 148, 249, 0.4); z-index: 3000; font-weight: 600; font-size: 0.9rem;
+            opacity: 0; transition: opacity 0.3s, top 0.3s; pointer-events: none;
         `;
         document.body.appendChild(msgDiv);
     }
     msgDiv.innerText = texto;
+    
+    // Animação para aparecer (desce um pouco para não ficar em cima do cabeçalho)
     msgDiv.style.opacity = '1';
-    msgDiv.style.bottom = '80px'; 
-    setTimeout(() => { msgDiv.style.opacity = '0'; msgDiv.style.bottom = '30px'; }, 2500);
+    msgDiv.style.top = '90px'; 
+    
+    // Animação para desaparecer (sobe e fica invisível)
+    setTimeout(() => { 
+        msgDiv.style.opacity = '0'; 
+        msgDiv.style.top = '20px'; 
+    }, 2500);
 }
 
 // --- CHECKOUT WHATSAPP ---
