@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateliê MB Criative - Catálogo de Luxo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Ateliê MB Criative</div>
+        <div class="cart-icon" onclick="toggleCart()" aria-label="Abrir Carrinho">
+            <span class="material-icons-round">shopping_bag</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </header>
+
+    <div class="main-layout">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Categorias</h3>
+                <button class="close-sidebar-btn" onclick="toggleSidebar()">
+                    <span class="material-icons-round">close_fullscreen</span>
+                </button>
+            </div>
+            <nav class="filters">
+                <button class="filter-btn active" data-tipo="todos" onclick="setFilter('todos')">Todas as Peças</button>
+                <button class="filter-btn" data-tipo="novidade" onclick="setFilter('novidade')">Novidades ✨</button>
+                <button class="filter-btn" data-tipo="brinco" onclick="setFilter('brinco')">Brincos 💎</button>
+                <button class="filter-btn" data-tipo="porta-copo" onclick="setFilter('porta-copo')">Porta-Copos
+                    ☕</button>
+                <button class="filter-btn" data-tipo="letra" onclick="setFilter('letra')">Letras 🔠</button>
+                <button class="filter-btn" data-tipo="pingente" onclick="setFilter('pingente')">Pingentes 🪄</button>
+                <button class="filter-btn" data-tipo="chaveiro" onclick="setFilter('chaveiro')">Chaveiros 🔑</button>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            <div class="top-controls">
+                <button class="toggle-menu-btn" onclick="toggleSidebar()">
+                    <span class="material-icons-round">menu</span> Menu
+                </button>
+                <div class="search-bar">
+                    <span class="material-icons-round">search</span>
+                    <input type="text" id="search-input" placeholder="Buscar resinas..." oninput="handleSearch()">
+                </div>
+            </div>
+
+            <div class="container" id="products-container">
+            </div>
+        </main>
+    </div>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button class="close-cart" onclick="toggleCart()" aria-label="Fechar Carrinho">✕</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                Finalizar no WhatsApp <span class="material-icons-round"
+                    style="font-size: 18px; margin-left: 8px;">whatsapp</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" onclick="fecharImagem()">
+        <img class="lightbox-content" id="lightbox-img" alt="Imagem ampliada">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3 class="footer-logo">Ateliê MB Criative</h3>
+                <p>Eternizando momentos em resina com muito amor e exclusividade. Feito à mão para você.</p>
+            </div>
+            <div class="footer-social">
+                <h4>Acompanhe nosso trabalho</h4>
+                <div class="social-icons">
+                    <a href="https://instagram.com/seu_perfil" target="_blank" class="social-btn">
+                        <i class="fa-brands fa-instagram" style="font-size: 22px;"></i> Instagram
+                    </a>
+                    <a href="https://wa.me/5581997192611" target="_blank" class="social-btn">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ateliê MB Criative. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <button class="scroll-down-btn" id="scrollTopBtn" onclick="scrollToTop()">
+        <span class="material-icons-round">expand_less</span>
+    </button>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
